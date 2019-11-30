@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using App.Services;
 
 namespace App.Models
 {
@@ -14,6 +15,15 @@ namespace App.Models
         public string Location { get; set; }
         public DateTime PublishedDate { get; set; }
         public bool IsRemote { get; set; }
+
+        public bool CanShowCategory
+        {
+            get
+            {
+                return FeatureManager.IsEnabled(Features.CanShowCategoryTags);
+            }
+        }
+
         public int ViewCount { get; set; }
         public int Likes { get; set; }
         public string CompanyLogoUrl { get; set; }

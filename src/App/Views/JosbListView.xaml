@@ -133,7 +133,7 @@
                                                FontSize="Small"
                                                    Margin="0"
                                                    Padding="0" VerticalOptions="Center"
-                                               LineBreakMode="NoWrap" TextColor="{StaticResource LocationLabelColor}"/>
+                                               LineBreakMode="NoWrap" TextColor="{StaticResource LocationLabelColor}"/> 
 
                                         
                                     </Grid>
@@ -143,6 +143,7 @@
                                                HorizontalOptions="End"
                                                HasShadow="False"
                                                Margin="0"
+                                               IsVisible="{Binding CanShowCategory}"
                                                >
                                             <Label Text="Desarrollador Web" FontSize="Micro" HorizontalOptions="End"  VerticalOptions="End" Margin="0" TextColor="White"/>
                                         </Frame>
