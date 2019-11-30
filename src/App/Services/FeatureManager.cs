@@ -9,9 +9,10 @@ namespace App.Services
     {
         public static readonly string CanShowCategoryTags = "show-category-tags";
     }
-
+    
     public static class FeatureManager
     {
+        public static event EventHandler FlagHasBeenChanged = (o,e)=>{};
         public static LdClient FeatureFlagClient;
         private static bool isInialized;
 
@@ -23,6 +24,21 @@ namespace App.Services
             var timeSpan = TimeSpan.FromSeconds(5);
             FeatureFlagClient = LdClient.Init(AppConstant.LaunchDarklyKey, user, timeSpan);
             isInialized = true;
+        }
+
+        internal static void RegisterForChange()
+        {
+            FeatureFlagClient.FlagChanged += FeatureFlagClient_FlagChanged;
+        }
+
+        internal static void UnregisterForChange()
+        {
+            FeatureFlagClient.FlagChanged -= FeatureFlagClient_FlagChanged;
+        }
+
+        private static void FeatureFlagClient_FlagChanged(object sender, FlagChangedEventArgs e)
+        {
+            FlagHasBeenChanged(null, null);
         }
 
         public static bool IsEnabled(string slug)
