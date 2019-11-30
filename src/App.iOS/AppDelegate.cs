@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using App.Services;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
@@ -25,6 +25,7 @@ namespace App.iOS
         {
 
             Forms.SetFlags("CollectionView_Experimental");
+            FeatureManager.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
