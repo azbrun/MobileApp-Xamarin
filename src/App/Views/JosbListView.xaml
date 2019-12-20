@@ -9,11 +9,18 @@
              x:Class="App.Views.JosbListView"
              xmlns:Local="clr-namespace:App.ViewModels"
              Shell.NavBarIsVisible="True"
-             BackgroundColor="{StaticResource BackGroundColor}"
-             >
+             BackgroundColor="{StaticResource BackGroundColor}">
         
     <ContentPage.BindingContext>
-        <Local:JobsListViewModel />
+
+        <Local:JobsListViewModel>
+            <x:Arguments>
+                <x:String>Title</x:String>
+                <x:String>Name</x:String>
+                <x:Boolean>Name</x:Boolean>
+            </x:Arguments>
+        </Local:JobsListViewModel>
+        
     </ContentPage.BindingContext>
     <ContentPage.Content>
 

@@ -3,8 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:UIKit;assembly=Xamarin.iOS;targetPlatform=iOS"
 		     xmlns:androidWidget="clr-namespace:Android.Widget;assembly=Mono.Android;targetPlatform=Android"
+             xmlns:Search="clr-namespace:App.ViewModels"
              x:Class="App.Views.SearchView"
              Title="Search">
+    <ContentPage.BindingContext>
+        <Search:SearchPageViewModel>
+            <!--<x:Arguments>
+                <x:String>Name</x:String>
+                <x:String>Name</x:String>
+                <x:Boolean>Name</x:Boolean>
+            </x:Arguments>-->
+        </Search:SearchPageViewModel>
+       
+    </ContentPage.BindingContext>
 <ContentPage.Content>
    
 
@@ -12,7 +23,8 @@
         <Label Text="Hola, ¿Qué tipo de trabajo estamos buscando?" TextColor="{StaticResource TextLabelColor}"
                FontSize="Large" FontAttributes="Bold" Margin="0,50,0,0" />
         
-         <Entry Placeholder=" Keywords" Margin="0,20,0,0"> </Entry>
+         <Entry Placeholder=" Keywords" Margin="0,20,0,0"
+                 BindingContext="{Binding JobsCards}"> </Entry>
          <Label Text="Buscar por Categoría" Margin="0,10,0,0"  FontSize="Default" TextColor="{StaticResource TextLabelColor}"
                 FontAttributes="Bold" />
          <CarouselView ItemsSource="{Binding JobCards}" NumberOfSideItems="1"
@@ -37,14 +49,16 @@
                     <Label Text="Buscar solo empleos remotos" TextColor="{StaticResource TextLabelColor}"
                            FontSize="Large" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
                     <Switch   OnColor="#13bac3"  ThumbColor="{StaticResource ThumbColor}"
-                              HorizontalOptions="End" VerticalOptions="Center" />
+                              HorizontalOptions="End" VerticalOptions="Center"
+                              BindingContext="{Binding IsRemote}"/>
          </StackLayout>
 
          <Button Text="Buscar" FontSize="Large" FontAttributes="Bold"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="CenterAndExpand"
                         TextColor="{StaticResource TextColoButtonSearch}"
-                        BackgroundColor="{StaticResource BackgroundColorButtonSearch}" HeightRequest="60"  WidthRequest="400" />
+                        BackgroundColor="{StaticResource BackgroundColorButtonSearch}" HeightRequest="60"  WidthRequest="400"
+                        Command="{Binding Buscar}"/>
     </StackLayout>
 </ContentPage.Content>
 </ContentPage>

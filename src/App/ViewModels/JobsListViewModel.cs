@@ -12,19 +12,24 @@ using Xamarin.Forms;
 
 namespace App.ViewModels
 {
-    class JobsListViewModel : INotifyPropertyChanged
+   public class JobsListViewModel : INotifyPropertyChanged
     {
         //public AppConstant ServiceConstant = new AppConstant();
+        public string title;
+        public string jobType;
+        public bool isRemote;
         public JobListModel JobsList { get; set; }
-        public JobsListViewModel()
+        public JobsListViewModel(string _Title, string _JobType, bool _isRemote)
         {
-
+            this.title = _Title;
+            this.jobType = _JobType;
+            this.isRemote = _isRemote;
             new Action(async () => await LoadData())();
         }
 
         public async Task LoadData()
         {
-            
+
             var Cards = await AppConstant.ApiUrl
                 .AppendPathSegment(AppConstant.ApiEndPoint)
                 .SetQueryParams(new { pagesize = AppConstant.PageSize, page = 1 })

@@ -23,7 +23,15 @@
                 <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}" Glyph="&#xf022;"/>
             </Tab.Icon>
             <ShellContent>
-                <pages:JosbListView/>
+
+                <pages:JobDetailView>
+                    <!--<x:Arguments>
+                        <x:String>Name</x:String>
+                        <x:String>Name</x:String>
+                        <x:Boolean>Name</x:Boolean>
+                    </x:Arguments>-->
+                </pages:JobDetailView>
+              
             </ShellContent>
         </Tab>
 

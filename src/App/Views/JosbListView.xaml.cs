@@ -1,3 +1,4 @@
+using App.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,11 @@ namespace App.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class JosbListView : ContentPage
     {
-        public JosbListView()
+        //
+        public JosbListView(string val, string val2, bool val3)
         {
             InitializeComponent();
-            
+            BindingContext = new JobsListViewModel(val,val2,val3);
         }
     }
 }
